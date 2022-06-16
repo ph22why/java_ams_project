@@ -1,0 +1,72 @@
+use ams;
+create table Muser(
+   Marmycode varchar(300) not null primary key, #스soldier트링으로변환
+    Mpassword varchar(300) not null,
+    Mgrade varchar(300) not null,
+    Mjob varchar(300) not null,
+    Mname varchar(300) not null,
+    Mbirth varchar(300) not null, #스트링으로변환
+    Mgunnum int unique not null,
+    basenum int not null,
+    constraint Muser_gun_fk foreign key(Mgunnum) references gun(gunnum),
+    constraint Muser_base_fk foreign key(basenum) references base(basenum)
+);
+create table soldier(
+	Sarmycode varchar(300) primary key,
+    Sgrade varchar(300) not null,
+    Sname varchar(300) not null,
+    Sbirth varchar(300) not null,
+    Sstate varchar(300) not null,
+    gunnum int unique not null,
+    Scamp int not null
+);
+create table car(
+	carnum varchar(300) primary key,
+    carname varchar(300) not null,
+    caruse boolean not null default true
+);
+create table base(
+	basenum int primary key,
+	basename varchar(300) not null
+);
+create table gun(
+   gunnum int primary key,
+	gunname varchar(300) not null
+);
+create table soldierlog (
+   sarmycode varchar(300) primary key,
+   pw varchar(300)
+);
+create table letter(
+   letternum int primary key auto_increment,
+    soldier_milinum varchar(300),
+    letter_title varchar(300),
+    letter_content varchar(3000),
+    timedata datetime
+);
+create table consultant(
+	id varchar(300) primary key,
+    pw   varchar(300) not null,
+    name varchar(300) not null,
+    birdate varchar(300) not null,
+    addr varchar(300) 
+);
+Create Table food(
+	foodname varchar(300) primary key not null,
+	foodamount int not null,
+	foodexpdate varchar(300) not null
+);
+create table product (   
+prodname varchar(300) not null, 
+prodamount int not null,    
+prodnum int primary key auto_increment
+);
+create table garbage(
+	gbcode int auto_increment primary key,
+    gbnum int not null,
+    gbname varchar(300) not null,
+    gbamount int
+);
+insert into base (basenum, basename) values(1111,'1대대');
+insert into base (basenum, basename) values(2222,'2대대');
+insert into base (basenum, basename) values(3333,'3대대');
